@@ -1,0 +1,76 @@
+{
+  "name": "upload-zip",
+  "version": "1.0.0",
+  "description": "A Node.js library that archives a directory to a ZIP file and uploads the ZIP file to an API.",
+  "bin": {
+    "upload-zip": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc && npm run build:script",
+    "build:script": "ts-node --project tsconfig.lib.json scripts/build.ts",
+    "clean": "rm -rf ./dist/",
+    "lint": "eslint 'src/**/*.{js,ts}' --color",
+    "lint:fix": "eslint 'src/**/*.{js,ts}' --color --fix",
+    "prettier": "prettier 'src/**/*.{js,ts}'",
+    "prettier:fix": "prettier --write 'src/**/*.{js,ts}'",
+    "prettier:validate": "prettier-check 'src/**/*.{js,ts}'",
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "validate": "npm run typecheck && npm run prettier:validate && npm run lint",
+    "prepare": "node -e \"try { process.env.CI || require('husky').install() } catch (e) {console.log('husky error...')}\"",
+    "prepare:alpha": "ts-node --project tsconfig.lib.json scripts/alpha-version.ts",
+    "prepare:minor": "npm version minor -m \"Prepare: %s version [skip ci]\"",
+    "prepare:major": "npm version major -m \"Prepare: %s version [skip ci]\"",
+    "prepare:patch": "npm version patch -m \"Prepare: %s version [skip ci]\"",
+    "release:minor": "npm version minor -m \"Release: %s version\"",
+    "release:major": "npm version major -m \"Release: %s version\"",
+    "release:patch": "npm version patch -m \"Release: %s version\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlgirdasM/upload-zip.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Algirdas Mazeika",
+    "email": "info@kaunostudija.lt",
+    "url": "https://github.com/AlgirdasM"
+  },
+  "engines": {
+    "node": ">=16.0"
+  },
+  "keywords": [
+    "cli",
+    "typescript",
+    "axios",
+    "zip",
+    "archiver",
+    "upload",
+    "archive"
+  ],
+  "bugs": {
+    "url": "https://github.com/algirdasm/upload-zip/issues"
+  },
+  "homepage": "https://github.com/algirdasm/upload-zip",
+  "dependencies": {
+    "archiver": "^5.3.1",
+    "axios": "^1.3.4",
+    "form-data": "^4.0.0",
+    "yargs": "^17.7.1"
+  },
+  "devDependencies": {
+    "@types/archiver": "^5.3.1",
+    "@types/node": "^18.14.1",
+    "@types/yargs": "^17.0.22",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.4",
+    "prettier-check": "^2.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
